@@ -31,64 +31,73 @@ import androidx.navigation.NavController
 import br.com.fiap.plataformaesg.R
 
 @Composable
-fun HomeScreen(navController: NavController){
-   Box(
-       modifier = Modifier.fillMaxSize()
-   ){
-       Column(
-           modifier = Modifier.fillMaxWidth()
-       ) {
+fun HomeScreen(navController: NavController) {
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Column(
+            modifier = Modifier.fillMaxWidth()
+        ) {
 
-       Column (
-           horizontalAlignment = Alignment.CenterHorizontally,
-           modifier = Modifier
-               .fillMaxWidth()
-              //.height(160.dp)
-       ){
-           Spacer(modifier = Modifier.height(50.dp))
-           Image(
-               painter = painterResource(id = R.drawable.img),
-               contentDescription = "imagem principal",
-              modifier = Modifier.size(328.dp),
-               contentScale = ContentScale.Crop
-           )
-           Spacer(modifier = Modifier.height(50.dp))
-           Text(
-               text = "Seja bem-vindo!",
-               color = colorResource(id = R.color.cor_do_texto),
-               fontSize = 25.sp,
-               fontWeight = FontWeight.Bold,
-               )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxWidth()
 
-           Spacer(modifier = Modifier.padding(14.dp))
-           Text(
-               text = "Este app foi criado para ajudar você a " +
-                       "ser mais sustentável e responsável" +
-                       " em sua vida pessoal e profissional.",
-               color = colorResource(id = R.color.cor_do_texto),
-               fontSize = 15.sp,
-               textAlign = TextAlign.Center
+            ) {
 
-           )
-           Spacer(modifier = Modifier.height(88.dp))
-           Button(
-               onClick = {
-               navController.navigate( route = "login") },
-               modifier = Modifier.height(62.dp).width(297.dp),
-               colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.cor_do_botao))
-           ) {
-               Text(
-                   text = "Comece aqui",
-                   color = Color.White,
-                   fontSize = 20.sp,
-                   textAlign = TextAlign.Center,
+                Image(
+                    painter = painterResource(id = R.drawable.img),
+                    contentDescription = "imagem principal",
+                    modifier = Modifier
+                        .padding(top = 50.dp)
+                        .size(328.dp),
+                    contentScale = ContentScale.Crop
+                )
+                Spacer(modifier = Modifier.height(50.dp))
+                Text(
+                    text = "Seja bem-vindo!",
+                    color = colorResource(id = R.color.cor_do_texto),
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+
+                Spacer(modifier = Modifier.padding(14.dp))
+                Text(
+                    text = "Este app foi criado para ajudar você a " +
+                            "ser mais sustentável e responsável" +
+                            " em sua vida pessoal e profissional.",
+                    color = colorResource(id = R.color.cor_do_texto),
+                    fontSize = 15.sp,
+                    textAlign = TextAlign.Center,
 
 
-               ) }
-        }
-          }
+                )
+                Spacer(modifier = Modifier.height(88.dp))
+                Button(
+                    onClick = {
+                        navController.navigate(route = "login")
+                    },
+                    modifier = Modifier
+                        .height(62.dp)
+                        .width(297.dp),
+
+
+                    colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.cor_do_botao))
+                ) {
+                    Text(
+                        text = "Comece aqui",
+                        color = Color.White,
+                        fontSize = 20.sp,
+                        textAlign = TextAlign.Center,
+
+
+                        )
+                }
             }
-               }
+        }
+    }
+}
 
 
 
