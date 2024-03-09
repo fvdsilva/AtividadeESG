@@ -129,10 +129,6 @@ fun LoginScreen() {
                       unfocusedBorderColor = colorResource(id = R.color.cor_da_borda)
                   ),
 
-                    //colors = OutlinedTextFieldDefaults.colors(
-                       // unfocusedBorderColor = colorResource(id = R.color.cor_da_borda)
-                   // ),
-
                     shape = RoundedCornerShape(30.dp),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
                 )
