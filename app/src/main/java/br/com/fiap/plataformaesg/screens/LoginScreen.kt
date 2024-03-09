@@ -1,6 +1,7 @@
 package br.com.fiap.plataformaesg.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +20,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,6 +34,8 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,6 +46,8 @@ fun LoginScreen() {
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var isPasswordVisible by remember { mutableStateOf(false) }
+
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -82,7 +88,7 @@ fun LoginScreen() {
                         .height(62.dp)
                         .width(297.dp),
                     placeholder = {
-                        Text(text = "ID do colaborador")
+                        Text(text = "E-mail")
                     },
                     leadingIcon = {
                         Icon(
@@ -99,29 +105,36 @@ fun LoginScreen() {
 
                 OutlinedTextField(
                     value = password,
-                    onValueChange = { letra -> password = letra },
+                    onValueChange = {  password = it },
                     singleLine = true,
                     modifier = Modifier
                         .padding(top = 17.dp)
                         .height(62.dp)
                         .width(297.dp),
                     placeholder = {
-                        Text(text = "Senha do colaborador")
+                        Text(text = "Senha")
                     },
 
                     leadingIcon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.lock_24),
-                            contentDescription = "icone de cadeado"
-                        )
-                    },
+                      Icon(
+                          painter = painterResource(id = if (isPasswordVisible) R.drawable.visibility_24 else R.drawable.visibility_off_24),
+                          contentDescription = "Ícone de visibilidade de senha",
+                          modifier = Modifier.clickable {
+                              isPasswordVisible = !isPasswordVisible
+                          }
+                      )
+                                },
+                  visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                  colors = OutlinedTextFieldDefaults.colors(
+                      unfocusedBorderColor = colorResource(id = R.color.cor_da_borda)
+                  ),
 
-                    colors = OutlinedTextFieldDefaults.colors(
-                        unfocusedBorderColor = colorResource(id = R.color.cor_da_borda),
-                    ),
+                    //colors = OutlinedTextFieldDefaults.colors(
+                       // unfocusedBorderColor = colorResource(id = R.color.cor_da_borda)
+                   // ),
 
                     shape = RoundedCornerShape(30.dp),
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
                 )
 
                 Button(
@@ -130,7 +143,7 @@ fun LoginScreen() {
                         .padding(top = 60.dp)
                         .height(62.dp)
                         .width(297.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.cor_do_botao))
+                    colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.cor_do_botao)),
                 ) {
                     Text(
                         text = "Entrar",

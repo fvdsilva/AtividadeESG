@@ -36,7 +36,10 @@ fun HomeScreen(navController: NavController) {
         modifier = Modifier.fillMaxSize()
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+
+
         ) {
 
             Column(
@@ -56,7 +59,7 @@ fun HomeScreen(navController: NavController) {
                 )
                 Spacer(modifier = Modifier.height(50.dp))
                 Text(
-                    text = "Seja bem-vindo!",
+                    text = "Seja bem-vindo! ",
                     color = colorResource(id = R.color.cor_do_texto),
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Bold,
