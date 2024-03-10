@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="cor_do_texto">#353535</color>
     <color name="cor_do_botao">#760FFD</color>
-    <color name="cor_da_borda">#EEEEEE</color>
-
-
+    <color name="cor_da_borda">#ACACAC</color>
+    <color name="cor_da_borda_em_foco">#760FFD</color>
+    <color name="cor_do_icone">#760FFD</color>
 </resources>

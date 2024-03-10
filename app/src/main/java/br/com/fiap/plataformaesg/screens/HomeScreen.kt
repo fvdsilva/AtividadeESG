@@ -59,7 +59,7 @@ fun HomeScreen(navController: NavController) {
                 )
                 Spacer(modifier = Modifier.height(50.dp))
                 Text(
-                    text = "Seja bem-vindo! ",
+                    text = "Seja bem-vindo(a)! ",
                     color = colorResource(id = R.color.cor_do_texto),
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Bold,
@@ -75,7 +75,7 @@ fun HomeScreen(navController: NavController) {
                     textAlign = TextAlign.Center,
 
 
-                )
+                    )
                 Spacer(modifier = Modifier.height(88.dp))
                 Button(
                     onClick = {
@@ -93,8 +93,6 @@ fun HomeScreen(navController: NavController) {
                         color = Color.White,
                         fontSize = 20.sp,
                         textAlign = TextAlign.Center,
-
-
                         )
                 }
             }

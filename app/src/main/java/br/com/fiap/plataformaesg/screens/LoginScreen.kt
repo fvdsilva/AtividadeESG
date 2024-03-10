@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,7 +19,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -87,17 +85,19 @@ fun LoginScreen() {
                         .padding(top = 40.dp)
                         .height(62.dp)
                         .width(297.dp),
-                    placeholder = {
+                    label = {
                         Text(text = "E-mail")
                     },
                     leadingIcon = {
                         Icon(
-                            painter = painterResource(id = R.drawable.fingerprint_24),
-                            contentDescription = "icone de cadeado"
+                            painter = painterResource(id = R.drawable.baseline_alternate_email_24),
+                            contentDescription = "icone de digital",
+                            tint = colorResource(id = R.color.cor_do_icone),
                         )
                     },
                     colors = OutlinedTextFieldDefaults.colors(
                         unfocusedBorderColor = colorResource(id = R.color.cor_da_borda),
+                        focusedBorderColor = colorResource(id = R.color.cor_da_borda_em_foco)
                     ),
                     shape = RoundedCornerShape(30.dp),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
@@ -105,29 +105,31 @@ fun LoginScreen() {
 
                 OutlinedTextField(
                     value = password,
-                    onValueChange = {  password = it },
+                    onValueChange = { password = it },
                     singleLine = true,
                     modifier = Modifier
                         .padding(top = 17.dp)
                         .height(62.dp)
                         .width(297.dp),
-                    placeholder = {
+                    label = {
                         Text(text = "Senha")
                     },
 
                     leadingIcon = {
-                      Icon(
-                          painter = painterResource(id = if (isPasswordVisible) R.drawable.visibility_24 else R.drawable.visibility_off_24),
-                          contentDescription = "Ícone de visibilidade de senha",
-                          modifier = Modifier.clickable {
-                              isPasswordVisible = !isPasswordVisible
-                          }
-                      )
-                                },
-                  visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-                  colors = OutlinedTextFieldDefaults.colors(
-                      unfocusedBorderColor = colorResource(id = R.color.cor_da_borda)
-                  ),
+                        Icon(
+                            painter = painterResource(id = if (isPasswordVisible) R.drawable.visibility_24 else R.drawable.visibility_off_24),
+                            contentDescription = "Ícone de visibilidade de senha",
+                            tint = colorResource(id = R.color.cor_do_icone),
+                            modifier = Modifier.clickable {
+                                isPasswordVisible = !isPasswordVisible
+                            }
+                        )
+                    },
+                    visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        unfocusedBorderColor = colorResource(id = R.color.cor_da_borda),
+                        focusedBorderColor = colorResource(id = R.color.cor_da_borda_em_foco)
+                    ),
 
                     shape = RoundedCornerShape(30.dp),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
@@ -148,10 +150,7 @@ fun LoginScreen() {
                         textAlign = TextAlign.Center
                     )
                 }
-
-
             }
-
         }
     }
 }
